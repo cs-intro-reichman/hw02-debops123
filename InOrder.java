@@ -4,6 +4,17 @@
  */
 public class InOrder {
 	public static void main (String[] args) {
-		//// Write your code here
+		int firstNum = (int) (Math.random() * 10);
+        System.out.print(firstNum);
+		while (true) {
+			int randomNum = (int) (Math.random() * 10);
+			if (randomNum >= firstNum) {
+				System.out.print(" " + randomNum);
+				firstNum = randomNum;
+			}
+			else {
+				break;
+			}
+        }
 	}
 }

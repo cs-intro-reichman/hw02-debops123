@@ -14,16 +14,52 @@ public class OneOfEachStats {
 		int seed = Integer.parseInt(args[1]);
 		// Initailizes a random numbers generator with the given seed value
         Random generator = new Random(seed);  
+
+		int totalChildren = 0;
+        int twoChildrenCount = 0;
+        int threeChildrenCount = 0;
+        int fourOrMoreChildrenCount = 0;
+		String firstMostCommon = "";
+		for  (int i = 0; i < T; i++) {
+			int childrenCount = 0;
+			boolean boyBorn = false;
+			boolean girlBorn = false;
+			while (!(boyBorn && girlBorn)) {
+				if (generator.nextDouble() < 0.5) {
+					boyBorn = true;
+				} else {
+					girlBorn = true;
+				}
+				childrenCount++;
+			}
+			totalChildren = totalChildren + childrenCount;
+			if (childrenCount == 2) {
+				twoChildrenCount ++;
+				firstMostCommon = firstMostCommon.concat("2");
+			}
+			if (childrenCount == 3) {
+				threeChildrenCount ++;
+				firstMostCommon = firstMostCommon.concat("3");
+			}
+			if (childrenCount > 3) {
+				fourOrMoreChildrenCount ++;
+				firstMostCommon = firstMostCommon.concat("4");
+			}
+		}
 		
-		//// In the previous version of this program, you used a statement like:
-		//// double rnd = Math.random();
-		//// Where "rnd" is the variable that stores the generated random value.
-		//// In this version of the program, replace this statement with:
-		//// double rnd = generator.nextDouble();
-		//// This statement will generate a random value in the range [0,1),
-		//// just like you had in the previous version, except that the 
-		//// randomization will be based on the given seed.
-		//// This is the only change that you have to do in the program.
-		    
+		System.out.println("Average: "+ (double) totalChildren/T + " children to get at least one of each gender");
+		System.out.println("Number of families with two children: " + twoChildrenCount);
+		System.out.println("Number of families with three children: " + threeChildrenCount);
+		System.out.println("Number of families with four or more children: " + fourOrMoreChildrenCount);
+		if ((twoChildrenCount > threeChildrenCount && twoChildrenCount > fourOrMoreChildrenCount) || (firstMostCommon.charAt(0) == '2') ){
+			System.out.println("The most common number of children is 2.");
+		}
+		else if ( (threeChildrenCount > twoChildrenCount && threeChildrenCount > fourOrMoreChildrenCount) || (firstMostCommon.charAt(0) == '3') ) {
+			System.out.println("The most common number of children is 3." );
+		}		
+		else if ((fourOrMoreChildrenCount > threeChildrenCount &&  fourOrMoreChildrenCount > twoChildrenCount) || (firstMostCommon.charAt(0) == '4' ) ) 
+		{
+			System.out.println("The most common number of children is 4 or more." );
+		}	
 	}
 }
