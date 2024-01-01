@@ -7,7 +7,7 @@ public class DamkaBoard {
 		
 		for (int i = 1; i <= n; i++) {
 			if (i % 2 == 0) {
-				System.out.println(" "+"* ".repeat(n)); 
+				System.out.println(" "+"*".repeat(n)); 
 			}
 			else {
 				System.out.println("* ".repeat(n)); 
