@@ -4,7 +4,7 @@
 public class Divisors {
 	public static void main (String[] args) {
 		int n = Integer.parseInt(args[0]);
-		int i = 1;
+		int i = 1; // TODO: name it divisor or d, not i
 		while ( i <= n ) { 
 			if ( n % i == 0)
 			{

@@ -7,7 +7,7 @@ public class Perfect {
         int sumOfDivisors = 1;
 		String resultString = number + " is a perfect number since "+number+" = 1";
 		
-		
+		// TODO: you have one empty line more than needed
 		for (int i = 2; i <= number / 2; i++) {
             if (number % i == 0) {
                 sumOfDivisors += i;
